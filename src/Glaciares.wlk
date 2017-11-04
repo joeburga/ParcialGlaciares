@@ -15,9 +15,9 @@ class Glaciar {
 	 * desprendimiento. El peso inicial es la millonésima parte de la masa del 
 	 * glaciar multiplicado por la temperatura de su desembocadura. */
 	 
-	method pesoInicialTempano(tempano){
+	method pesoInicialTempano(desemboca){
 		
-		return (masa / 1000000) * temperatura//o es los grados del tempano? tempano.grados()  
+		return (masa / 1000000) * desemboca.temperatura()
 	}
 	
 	/* Hacer que se produzca un desprendimiento de un glaciar. Cuando esto sucede, 
@@ -27,17 +27,17 @@ class Glaciar {
 	 * deriva en ese lago o río. En el caso de caer en otro glaciar, dicho glaciar 
 	 * crece en masa tanto como el peso del témpano. */
 	
-	method producirDesprendimiento(lugarDondeCae){
+	method producirDesprendimiento(desemboca){
 		var tempanoGenerado = new TempanoCompacto(0,0)//peso,grados
 		masa -= tempanoGenerado.peso() 
-		self.desembocaEn(tempanoGenerado, lugarDondeCae)
+		self.desembocaEn(tempanoGenerado, desemboca)
 	}
 	/* Un glaciar desemboca en un solo lugar, que puede ser otro glaciar o
 	 * una masa de agua (o sea, un río o un lago).Es allí donde van cayendo
 	 * los témpanos que se desprenden cada tanto del glaciar. */
 		
 	method desembocaEn(tempano,lugar){
-		if(self.esGlaciar()){
+		if(lugar.esGlaciar()){
 			
 			lugar.agregarTempano(tempano)
 			masa += tempano.peso()
@@ -59,6 +59,8 @@ class Glaciar {
 		
 		return true
 	}
+	
+	
 }
 
 

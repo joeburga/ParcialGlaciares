@@ -1,6 +1,7 @@
 import Glaciares.*
 import Tempanos.*
 import MasasDeAgua.*
+import Embarcaciones.*
 
 describe "testX" {
 

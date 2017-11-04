@@ -34,6 +34,8 @@ class Tempano {
 		peso -= 1
 		
 	}
+	
+	
 }
 
 class TempanoCompacto inherits Tempano {
@@ -57,6 +59,20 @@ class TempanoCompacto inherits Tempano {
 	override method grados(){
 		
 		return peso / 100
+	}
+	
+	override method flotarEn(lugar){
+		if(!self.esGrande()){
+			
+			lugar.agregarTempano(self)
+			peso -= 1
+			self.volveteAireado()//como cambiar el tipo¿?
+		}
+		
+	}
+	
+	method volveteAireado(){
+		
 	}
 }
 
